@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RunProgramOnDisplay": {
+      "commandName": "Project",
+      "commandLineArgs": "screen2 \"C:\\Program Files\\Mozilla Firefox\\firefox.exe\""
+    }
+  }
+}
