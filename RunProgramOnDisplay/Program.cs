@@ -63,14 +63,16 @@ namespace RunProgram
 			Console.WriteLine("Something's happening with the arguments.");
 			Console.WriteLine("Here is how to use me:");
 			Console.WriteLine("\tRunProgramOnDisplay <screen<1|2>> <program's full path> [arguments]");
+			Console.WriteLine("\nExample: RunProgramOnDisplay screen1 C:\\Windows\\System32\\cmd.exe /C echo test");
 		}
 
 		private static bool ArgumentsAreValid(string[] args)
 		{
-			bool result = args?.Length >= 2;
-
-			result = result && args[0].ToLower().StartsWith("screen") && (args[0].EndsWith('1') || args[0].EndsWith('2'));
-			result = result && File.Exists(args[1]);
+			if (args is null || args.Length < 2)
+				return false;
+				
+			bool result = args[0].StartsWith("screen", StringComparison.InvariantCultureIgnoreCase) && (args[0].EndsWith('1') || args[0].EndsWith('2'));
+			result = File.Exists(args[1]);
 			
 			return result;
 		}
